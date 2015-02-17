@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Nov 30 12:34:54 2014
-
-@author: changli
-"""
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as ET
@@ -34,11 +27,11 @@ def key_type(element, keys):
     if element.tag == "tag":
         # YOUR CODE HERE
         value = element.get("k")
-        print value
         a = lower.match(value)
         b = lower_colon.match(value)
-        c = problemchars.search(value)       
+        c = problemchars.search(value)  
         
+        #count problematic tags
         if a:
             keys["lower"] +=1
         elif b: 

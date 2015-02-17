@@ -17,7 +17,7 @@ def count_tags(filename):
     tree = ET.parse(filename)
     root = tree.getroot()
     tags = {}
-    for elem in root.iter(): #iter() return all the subtags
+    for elem in root.iter():
         if elem.tag in tags:
             tags[elem.tag] += 1
         else: 

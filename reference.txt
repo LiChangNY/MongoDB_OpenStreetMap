@@ -1,0 +1,8 @@
+References:
+
+OpenStreetMap Sample Project Data Wrangling with MongoDB
+https://docs.google.com/document/d/1F0Vs14oNEs2idFJR3C_OPxwS6L0HPliOii-QpbmrMo4/pub
+
+Udacity Data Wrangling with Mongo DB: Las Vegas exercice
+http://blog.zagwozdka.com/2014/03/udacity-data-wrangling-with-mongo-db.html
+

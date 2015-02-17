@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Nov 30 14:42:02 2014
-
-@author: changli
-"""
-
 """
 Your task in this exercise has two steps:
 
@@ -29,8 +22,7 @@ expected = ["Street", "Avenue", "Boulevard", "Drive", "Court", "Place", "Square"
             "Trail", "Parkway", "Commons"]
 
 # UPDATE THIS VARIABLE
-mapping = { #"St": "Street",
-            "St.": "Street",
+mapping = {  "St.": "Street",
             "Ave": "Avenue",
             "Rd.": "Road" 
             }

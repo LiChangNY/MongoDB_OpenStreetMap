@@ -1,0 +1,6 @@
+Ho Chi Minh City
+The reason why I choose Ho Chi Minh City is because it’s one of my choices for destination wedding. I want to use OpenStreetMap to explore what hotels are available in the area and if possible to compare amenities and ratings of different hotels.
+
+Download data from MapZen:https://s3.amazonaws.com/metro-extracts.mapzen.com/ho-chi-minh-city_vietnam.osm.bz2 
+
+It returns a file of 64 MB (uncompressed). 
