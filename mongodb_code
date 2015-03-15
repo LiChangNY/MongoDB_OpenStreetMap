@@ -1,0 +1,38 @@
+#import data. Type this command line in the seperate shell
+mongoimport –d test –c ho ho-chi-minh-city_vietnam.osm.json
+
+
+#Problems encountered
+#missing address
+db.ho.find( { address: {$exists: false}}).count() 
+
+#group and sort by street
+db.ho.aggregate( [ {$match: {"address.street": {$exists: true}}}, {$group: { _id: "$address.street", total: { $sum: 1}}}, { $sort: {total: -1}},  {$limit: 5} ])
+
+#Use MapReduce
+var map = function() { if(this.address != null && this.address.street != null) { var words = this.address.street.split(" "); if(words == null){return;} for (var i = 0; i < words.length; i ++ ){ emit(words[i], {count: 1});}}}
+var reduce = function(key, values) {var total = 0; for (var i =0; i < values.length; i ++) { if(values[i] != null) total += values[i].count;} return {count: total};}
+var final = function(key, values) {return key, values;}
+db.ho.mapReduce(map, reduce, {out:"results", finalize: final})
+
+db.results.aggregate( {$sort: {"value.count": -1}}, {$limit:10})
+
+#group and sort by postcode
+db.ho.aggregate( [ {$match: {"address.postcode": {$exists: true}}}, {$group: { _id: "$address.postcode", total: { $sum: 1}}}, { $sort: {total: -1}},  {$limit: 10} ])
+
+
+#overview of the data
+db.ho.stats()
+db.ho.find( {type: 'node'}).count()
+db.ho.find( {type: 'way'}).count()
+db.ho.distinct('created.user').length
+db.ho.aggregate( { $group: { _id: "$created.user", total: { $sum: 1}}}, { $sort: {total: -1}},  { $limit: 10} )
+db.ho.aggregate( [ {$match: {amenity: {$exists: true}}}, {$group: { _id: "$amenity", "total": { $sum: 1}}}, { $sort: { total: -1}}, { $limit: 10}])
+
+#Other ideas about the datasets
+db.ho.find( {$or: [ { tourism: 'hotel'}, {building: 'hotel'}]}).count()
+db.ho.aggregate({$match: { $or: [{tourism: 'hotel'}, {building: 'hotel'}]}},{$group: { _id: "$stars", total: {$sum: 1}}},{ $sort: {_id: -1}})
+db.ho.aggregate({$match: {stars: "5"}},{$group: { _id: "$name", total: {$sum: 1}}},{ $sort: {_id: -1}})
+db.ho.aggregate({$match: { $or: [{tourism: 'hotel'}, {building: 'hotel'}]}},{$group: { _id: "$rooms", total: {$sum: 1}}},{ $sort: {_id: -1}})
+
+
