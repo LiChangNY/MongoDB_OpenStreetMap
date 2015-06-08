@@ -1,4 +1,4 @@
-# Udacity Data Wrangling with MongoDB Final Project
+# Data Wrangling with OpenStreetMap
 
 * [exercise](https://github.com/LiChangNY/Udacity_MongoDB/tree/master/exercise): scripts for lesson 6 exercises
 * [data](https://github.com/LiChangNY/Udacity_MongoDB/tree/master/data): original OpenStreetMap dataset and converted JSON file
